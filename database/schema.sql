@@ -63,9 +63,18 @@ CREATE TABLE Collaborations (
     FOREIGN KEY (invited_by_user_id) REFERENCE USERS(id) ON DELETE CASCADE
 );
 
--- Project Roles
--- Collaborations
--- Test Session
+-- TODO: Test Session
+CREATE TABLE Test_Sessions (
+    id BIGINT Auto_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    project_id BIGINT NOT NULL,
+    participant_id BIGINT NOT NULL,
+    status ENUM('IN_PROGRESS', 'PAUSED', 'COMPLETED') DEFAULT 'IN_PROGRESS',
+    started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    completed_at TIMESTAMP NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (project_id) REFERENCES Projects(id) ON DELETE CASCADE
+);
 -- SUS Questionnaires
 -- Facial Data
 -- Responses
@@ -74,3 +83,6 @@ CREATE TABLE Collaborations (
 -- Task Metrics
 -- Rewards
 
+--CHECK DATA INTEGRITY 
+-- FIND ALL PROJECTS A USERS OWNS
+-- FIND ALL USERS WITH ROLES IN A PROJECT
