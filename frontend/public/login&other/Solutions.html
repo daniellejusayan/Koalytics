@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+    <div id="main-container" class="bg-white">
+        <header id="header" class="border-b border-gray-200 bg-white sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-black rounded"></div>
+                            <span class="text-xl font-semibold text-gray-900">Koalytics</span>
+                        </div>
+                        <nav class="hidden md:flex space-x-6">
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Platform</span>
+                            <span class="text-blue-600 font-medium cursor-pointer">Solutions</span>
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Resources&Pricing</span>
+                        </nav>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-700 hover:text-gray-900 font-medium">Sign up</button>
+                        <button class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 font-medium">Log in</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="hero-section" class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 h-[600px]">
+            <div class="max-w-7xl mx-auto px-6 py-20">
+                <div class="text-center">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">Unlock Hidden Insights<br><span class="text-blue-600">Solve Every Usability Challenge</span></h1>
+                    <p class="text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
+                        Whether you're a UX researcher, Product Manager, or educator, Koalytics has solutions designed specifically for you
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <button class="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 font-semibold text-lg shadow-lg">
+                            <i class="fa-solid fa-play mr-2"></i>Start Your Research Project for Free
+                        </button>
+                        <button class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:bg-gray-50 font-semibold text-lg">
+                            <i class="fa-solid fa-video mr-2"></i>Request a Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ux-researchers-section" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                        <i class="fa-solid fa-microscope mr-2"></i>For UX/UI Researchers
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Turn Emotions into Tangible Data</h2>
+                </div>
+
+                <div id="pain-points-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div id="pain-point-1" class="bg-red-50 border border-red-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-question text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Tired of Interpreting Unclear</h3>
+                        <p class="text-gray-700">User feedback that's not straightforward?</p>
+                    </div>
+
+                    <div id="pain-point-2" class="bg-orange-50 border border-orange-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-clock text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Spending Too Much Time</h3>
+                        <p class="text-gray-700">Analyzing interview videos hour by hour?</p>
+                    </div>
+
+                    <div id="pain-point-3" class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-chart-bar text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Lacking Quantitative Data</h3>
+                        <p class="text-gray-700">To support your qualitative insights?</p>
+                    </div>
+                </div>
+
+                <div id="solutions-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Koalytics is Your Solution</h3>
+                        
+                        <div class="space-y-6">
+                            <div id="solution-1" class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Get Unbiased and Accurate Data</h4>
+                                    <p class="text-gray-600">AI Emotion Analytics reduces interviewer bias and captures users' true emotions in real-time</p>
+                                </div>
+                            </div>
+
+                            <div id="solution-2" class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-lightbulb text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Discover 'Eureka Moments' Faster</h4>
+                                    <p class="text-gray-600">Dashboard clearly shows where users feel confused, satisfied, or frustrated in your prototype, saving massive analysis time</p>
+                                </div>
+                            </div>
+
+                            <div id="solution-3" class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-chart-line text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Combine Qualitative and Quantitative Data</h4>
+                                    <p class="text-gray-600">Provides SUS scores (quantitative) and emotion graphs (quantitative) alongside recordings (qualitative) for more credible reports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div id="ux-features" class="mt-16 bg-gray-50 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">Key Features for Researchers</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-brain text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">AI-Powered Emotion Analytics</h4>
+                            <p class="text-sm text-gray-600">Distribution & Timeline Chart</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-brands fa-figma text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Figma Integration</h4>
+                            <p class="text-sm text-gray-600">Prototype Integration</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-list-check text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Automated SUS</h4>
+                            <p class="text-sm text-gray-600">Questionnaire</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-users text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Collaboration Tools</h4>
+                            <p class="text-sm text-gray-600">for Team Analysis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-medium text-lg">
+                        Start Your Research Project for Free
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="product-managers-section" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                        <i class="fa-solid fa-chart-line mr-2"></i>For Product Managers
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Make Precise Decisions, Ship Features Users Actually Love</h2>
+                </div>
+
+                <div id="pm-pain-points" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-percentage text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Unsure if New Design</h3>
+                        <p class="text-gray-700">Will actually improve conversion rates?</p>
+                    </div>
+
+                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-shopping-cart text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Why Do Users Abandon</h3>
+                        <p class="text-gray-700">Their cart at the final step?</p>
+                    </div>
+
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-money-bill text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Spending Budget & Time</h3>
+                        <p class="text-gray-700">On features users don't actually want?</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Koalytics is Your Solution</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-shield text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Reduce Risk Before Development</h4>
+                                    <p class="text-gray-600">Test concepts and designs with real users to find issues early, before developers start coding, saving massive costs</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-funnel-dollar text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Find Leaks in Your Funnel</h4>
+                                    <p class="text-gray-600">Use Emotion Analytics to see where users get frustrated or confused in their journey (checkout, signup) and fix issues precisely</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-sort-numeric-down text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Prioritize Features with Confidence</h4>
+                                    <p class="text-gray-600">Use real user data to decide which features to develop or improve first for maximum business impact</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pm-features" class="mt-16 bg-white rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">Key Features for Product Managers</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-chart-simple text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Clear Dashboards</h4>
+                            <p class="text-sm text-gray-600">Actionable Insights</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-file-pdf text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">PDF Reports</h4>
+                            <p class="text-sm text-gray-600">for Stakeholders</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-tasks text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Task-Based Analysis</h4>
+                            <p class="text-sm text-gray-600">Emotion Analytics</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-user-tag text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Participant Details</h4>
+                            <p class="text-sm text-gray-600">& Demographics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <button class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 font-medium text-lg">
+                        Request a Demo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="education-section" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                        <i class="fa-solid fa-graduation-cap mr-2"></i>For Educational Institutions
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Elevate UX Education with Industry-Standard Tools</h2>
+                </div>
+
+                <div id="edu-pain-points" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-tools text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Students Lack Experience</h3>
+                        <p class="text-gray-700">With modern usability testing tools</p>
+                    </div>
+
+                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-users-cog text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Instructors Struggle to Manage</h3>
+                        <p class="text-gray-700">Multiple student group projects</p>
+                    </div>
+
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-user-shield text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Concerns About Consent</h3>
+                        <p class="text-gray-700">And participant privacy in research</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Koalytics is Your Solution</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-briefcase text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Prepare Students for Real-World Work</h4>
+                                    <p class="text-gray-600">Let students learn and practice with Biometric Usability Testing technology - skills that are in demand in the job market</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-layer-group text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">One Platform for Learning</h4>
+                                    <p class="text-gray-600">Instructors can create prototype projects, invite students to join teams, and track progress of each group in one place</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-shield-alt text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Built with Ethics in Mind</h4>
+                                    <p class="text-gray-600">Features clear consent form management and emphasizes biometric data safety, making it suitable for university research with confidence</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+
+                
+            </div>
+        </section>
+
+        <footer id="footer" class="bg-white border-t border-gray-200">
+            <div class="max-w-6xl mx-auto px-6 py-6">
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                    <div class="flex items-center space-x-6">
+                        <span>© 2025 UserTesting, Inc.</span>
+                        <span class="hover:text-gray-700 cursor-pointer">Privacy Policy</span>
+                        <span class="hover:text-gray-700 cursor-pointer">Terms of Service</span>
+                        <span class="hover:text-gray-700 cursor-pointer">Help Center</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="hover:text-gray-700 cursor-pointer">
+                            <i class="fa-brands fa-twitter"></i>
+                        </span>
+                        <span class="hover:text-gray-700 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="hover:text-gray-700 cursor-pointer">
+                            <i class="fa-brands fa-facebook"></i>
+                        </span>
+                        <span class="hover:text-gray-700 cursor-pointer">
+                            <i class="fa-brands fa-youtube"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
