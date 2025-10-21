@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+</head>
+<body class="bg-gray-50">
+    <div id="main-container" class="min-h-screen">
+        <header id="header" class="bg-white border-b border-gray-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-black rounded"></div>
+                            <span class="text-xl font-semibold text-gray-900">Koalytics</span>
+                        </div>
+                        <nav class="hidden md:flex space-x-6">
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Projects</span>
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Analytics</span>
+                            <span class="text-blue-600 font-medium cursor-pointer border-b-2 border-blue-600 pb-4">Participants</span>
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Settings</span>
+                        </nav>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                            <i class="fa-regular fa-bell text-lg"></i>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="text-gray-700 font-medium">Sarah Chen</span>
+                            <i class="fa-solid fa-chevron-down text-gray-400 text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content" class="max-w-7xl mx-auto px-6 py-8">
+            <div id="page-header" class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Participant Management</h1>
+                    <p class="text-gray-600 mt-2">Manage participants, recruitment, and rewards system</p>
+                </div>
+                <div class="flex items-center space-x-3">
+    
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium flex items-center space-x-2">
+                        <i class="fa-solid fa-link"></i>
+                        <span>Create Invite Link</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="participant-stats" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div id="total-participants-card" class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Total Participants</h3>
+                        <i class="fa-solid fa-users text-blue-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-600 mb-2">1,247</div>
+                    <p class="text-sm text-gray-600">+12% from last month</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div id="active-participants-card" class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Active This Month</h3>
+                        <i class="fa-solid fa-chart-line text-green-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-green-600 mb-2">324</div>
+                    <p class="text-sm text-gray-600">26% of total participants</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 26%"></div>
+                    </div>
+                </div>
+
+                <div id="pending-rewards-card" class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Pending Rewards</h3>
+                        <i class="fa-solid fa-gift text-orange-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-orange-600 mb-2">$2,450</div>
+                    <p class="text-sm text-gray-600">67 participants awaiting</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-orange-500 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div id="completion-rate-card" class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Completion Rate</h3>
+                        <i class="fa-solid fa-check-circle text-purple-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-purple-600 mb-2">89%</div>
+                    <p class="text-sm text-gray-600">Above industry average</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-purple-500 h-2 rounded-full" style="width: 89%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="participant-database" class="bg-white rounded-xl border border-gray-200 p-6 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-900">Participant Database</h2>
+                    <div class="flex items-center space-x-3">
+                        <div class="relative">
+                            <input type="text" placeholder="Search participants..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                            <option>All Status</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                            <option>Blocked</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="participant-filters" class="flex items-center space-x-4 mb-6 p-4 bg-gray-50 rounded-lg">
+                    <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                        <option>All Ages</option>
+                        <option>18-25</option>
+                        <option>26-35</option>
+                        <option>36-45</option>
+                        <option>46+</option>
+                    </select>
+                    <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                        <option>All Genders</option>
+                        <option>Female</option>
+                        <option>Male</option>
+                        <option>Non-binary</option>
+                    </select>
+                    <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                        <option>Projec </option>
+                        <option>E-commerce Checkout Flow</option>
+                        <option>Dashboard Navigation Study</option>
+                        <option>Mobile App Onboarding</option>
+                        <option>Other</option>
+                    </select>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm">Apply Filters</button>
+                </div>
+                <div id="participant-table" class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Participant</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Demographics</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tests Completed</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Earned</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr id="participant-row-1" class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Participant" class="w-10 h-10 rounded-full">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">Michael Johnson</div>
+                                            <div class="text-sm text-gray-500">michael.j@email.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">Male, 32</div>
+                                    <div class="text-sm text-gray-500">New York, US</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">12</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">$340</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                                    <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                                </td>
+                            </tr>
+                            <tr id="participant-row-2" class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Participant" class="w-10 h-10 rounded-full">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">Emily Davis</div>
+                                            <div class="text-sm text-gray-500">emily.davis@email.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">Female, 28</div>
+                                    <div class="text-sm text-gray-500">Los Angeles, US</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">8</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">$220</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                                    <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                                </td>
+                            </tr>
+                            <tr id="participant-row-3" class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Participant" class="w-10 h-10 rounded-full">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">David Wilson</div>
+                                            <div class="text-sm text-gray-500">david.w@email.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">Male, 45</div>
+                                    <div class="text-sm text-gray-500">Chicago, US</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">$150</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Inactive</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                                    <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="recruitment-section" class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div id="invitation-links" class="bg-white rounded-xl border border-gray-200 p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Recruitment & Invitation</h2>
+                    
+                    <div id="active-campaigns" class="space-y-4">
+                        <div id="campaign-1" class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-semibold text-gray-900">E-commerce Checkout Study</h3>
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Active</span>
+                            </div>
+                            <div class="text-sm text-gray-600 mb-3">
+                                <div class="flex items-center space-x-4">
+                                    <span>Target: 25 participants</span>
+                                    <span>Completed: 18</span>
+                                    <span>Remaining: 7</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="text" value="https://koalytics.com/test/abc123" readonly class="flex-1 px-3 py-2 bg-gray-50 border border-gray-300 rounded text-sm">
+                                <button class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 text-sm">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="campaign-2" class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-semibold text-gray-900">Mobile App Navigation</h3>
+                                <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Draft</span>
+                            </div>
+                            <div class="text-sm text-gray-600 mb-3">
+                                <div class="flex items-center space-x-4">
+                                    <span>Target: 30 participants</span>
+                                    <span>Completed: 0</span>
+                                    <span>Remaining: 30</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="text" value="https://koalytics.com/test/def456" readonly class="flex-1 px-3 py-2 bg-gray-50 border border-gray-300 rounded text-sm">
+                                <button class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 text-sm">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="w-full mt-4 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-medium">
+                        Create New Campaign
+                    </button>
+                </div>
+
+                <div id="quota-management" class="bg-white rounded-xl border border-gray-200 p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Quota Management</h2>
+                    
+                    <div id="quota-chart" class="h-64 mb-6"></div>
+
+                    <div id="quota-details" class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <div class="font-medium text-gray-900">Age 18-25</div>
+                                <div class="text-sm text-gray-600">Target: 10 | Current: 8</div>
+                            </div>
+                            <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <div class="font-medium text-gray-900">Age 26-35</div>
+                                <div class="text-sm text-gray-600">Target: 10 | Current: 6</div>
+                            </div>
+                            <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                <div class="bg-orange-500 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <div class="font-medium text-gray-900">Age 36+</div>
+                                <div class="text-sm text-gray-600">Target: 5 | Current: 4</div>
+                            </div>
+                            <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rewards-section" class="bg-white rounded-xl border border-gray-200 p-6 mb-8">
+                <h2 class="text-xl font-bold text-gray-900 mb-6">Rewards & Incentives</h2>
+                
+                <div id="reward-settings" class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <div id="points-system" class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i class="fa-solid fa-coins text-yellow-500 text-xl"></i>
+                            <h3 class="font-semibold text-gray-900">Points System</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Per completed test</span>
+                                <span class="text-sm font-medium">100 points</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Bonus for quality</span>
+                                <span class="text-sm font-medium">50 points</span>
+                            </div>
+                            <button class="w-full bg-yellow-100 text-yellow-800 py-2 rounded-lg hover:bg-yellow-200 text-sm">Configure</button>
+                        </div>
+                    </div>
+
+                    <div id="coupons-system" class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i class="fa-solid fa-ticket text-purple-500 text-xl"></i>
+                            <h3 class="font-semibold text-gray-900">Coupons & Vouchers</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Amazon Gift Cards</span>
+                                <span class="text-sm font-medium">$10-50</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Starbucks Cards</span>
+                                <span class="text-sm font-medium">$5-25</span>
+                            </div>
+                            <button class="w-full bg-purple-100 text-purple-800 py-2 rounded-lg hover:bg-purple-200 text-sm">Manage</button>
+                        </div>
+                    </div>
+
+                    <div id="cash-payments" class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i class="fa-solid fa-dollar-sign text-green-500 text-xl"></i>
+                            <h3 class="font-semibold text-gray-900">Cash Payments</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">PayPal Integration</span>
+                                <span class="text-sm font-medium text-green-600">Active</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Bank Transfer</span>
+                                <span class="text-sm font-medium text-gray-400">Coming Soon</span>
+                            </div>
+                            <button class="w-full bg-green-100 text-green-800 py-2 rounded-lg hover:bg-green-200 text-sm">Settings</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pending-rewards" class="border-t pt-6">
+                    <h3 class="font-semibold text-gray-900 mb-4">Pending Reward Distributions</h3>
+                    <div class="space-y-3">
+                        <div id="reward-pending-1" class="flex items-center justify-between p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Participant" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Alex Thompson</div>
+                                    <div class="text-xs text-gray-600">E-commerce Study Completion</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm font-medium text-green-600">$25</span>
+                                <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700">Process</button>
+                            </div>
+                        </div>
+                        <div id="reward-pending-2" class="flex items-center justify-between p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Participant" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Lisa Rodriguez</div>
+                                    <div class="text-xs text-gray-600">Mobile App Navigation Study</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm font-medium text-green-600">$30</span>
+                                <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700">Process</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="participant-portal" class="bg-white rounded-xl border border-gray-200 p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-6">Participant Experience Portal</h2>
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="text-center mb-6">
+                        <i class="fa-solid fa-user-circle text-6xl text-gray-400 mb-4"></i>
+                        <h3 class="text-lg font-semibold text-gray-900">Participant Dashboard Preview</h3>
+                        <p class="text-gray-600">What participants see when they log in</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-600">1,250</div>
+                                <div class="text-sm text
+                                
