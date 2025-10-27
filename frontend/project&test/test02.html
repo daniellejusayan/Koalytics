@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+</head>
+<body class="bg-gray-50">
+    <div id="main-container" class="min-h-screen">
+        <header id="header" class="bg-white border-b border-gray-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-black rounded"></div>
+                            <span class="text-xl font-semibold text-gray-900">Koalytics</span>
+                        </div>
+                         <nav class="hidden md:flex space-x-6">
+                            <span class="text-blue-600 font-medium cursor-pointer border-b-2 border-blue-600 pb-4">Projects</span>
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Analytics</span>
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Participants</span>
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Settings</span>
+                        </nav>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                            <i class="fa-regular fa-bell text-lg"></i>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="text-gray-700 font-medium">Sarah Chen</span>
+                            <i class="fa-solid fa-chevron-down text-gray-400 text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content" class="max-w-6xl mx-auto px-6 py-8">
+            <div id="page-header" class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Create New Usability Test</h1>
+                <p class="text-gray-600">Follow these steps to set up your user research project with biometric tracking</p>
+            </div>
+
+            <div id="progress-bar" class="mb-12">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-green-600 font-medium">Project Setup</span>
+                        </div>
+                        <div class="w-16 h-1 bg-blue-600"></div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">2</div>
+                            <span class="text-blue-600 font-medium">Prototype Upload</span>
+                        </div>
+                        <div class="w-16 h-1 bg-gray-200"></div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">3</div>
+                            <span class="text-gray-500">Ethics & Consent</span>
+                        </div>
+                        <div class="w-16 h-1 bg-gray-200"></div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">4</div>
+                            <span class="text-gray-500">Questionnaire</span>
+                        </div>
+                        <div class="w-16 h-1 bg-gray-200"></div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">5</div>
+                            <span class="text-gray-500">Launch & Share</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step-content" class="bg-white rounded-xl border border-gray-200 p-8">
+                <div id="prototype-upload-step">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-upload"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900">Prototype Upload</h2>
+                            <p class="text-gray-600">นำเข้า Prototype และกำหนด Tasks หรือ Scenarios สำหรับผู้เข้าร่วม</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div id="prototype-details" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Prototype Source *</label>
+                                <div class="space-y-3">
+                                    <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="radio" name="prototype-source" class="text-blue-600 focus:ring-blue-500" checked>
+                                        <div class="ml-3 flex items-center space-x-3">
+                                            <i class="fa-brands fa-figma text-xl text-purple-600"></i>
+                                            <div>
+                                                <div class="font-medium text-gray-900">Figma Link</div>
+                                                <div class="text-sm text-gray-500">Import directly from Figma</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="radio" name="prototype-source" class="text-blue-600 focus:ring-blue-500">
+                                        <div class="ml-3 flex items-center space-x-3">
+                                            <i class="fa-solid fa-link text-xl text-blue-600"></i>
+                                            <div>
+                                                <div class="font-medium text-gray-900">Web URL</div>
+                                                <div class="text-sm text-gray-500">Any web-based prototype</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="radio" name="prototype-source" class="text-blue-600 focus:ring-blue-500">
+                                        <div class="ml-3 flex items-center space-x-3">
+                                            <i class="fa-solid fa-file-upload text-xl text-green-600"></i>
+                                            <div>
+                                                <div class="font-medium text-gray-900">File Upload</div>
+                                                <div class="text-sm text-gray-500">Upload PDF, images, or files</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Figma URL *</label>
+                                <div class="relative">
+                                    <input type="url" placeholder="https://www.figma.com/proto/..." class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <i class="fa-brands fa-figma absolute left-4 top-1/2 transform -translate-y-1/2 text-purple-600"></i>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Make sure your Figma prototype is set to "Anyone with the link can view"</p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Starting Screen</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option>Auto-detect first frame</option>
+                                    <option>Homepage</option>
+                                    <option>Login Screen</option>
+                                    <option>Dashboard</option>
+                                    <option>Custom Screen</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Device Type</label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <label class="flex flex-col items-center p-4 border border-blue-300 bg-blue-50 rounded-lg cursor-pointer">
+                                        <input type="radio" name="device-type" class="sr-only" checked>
+                                        <i class="fa-solid fa-laptop text-2xl text-blue-600 mb-2"></i>
+                                        <span class="text-sm font-medium text-blue-700">Desktop</span>
+                                    </label>
+                                    <label class="flex flex-col items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="radio" name="device-type" class="sr-only">
+                                        <i class="fa-solid fa-mobile-alt text-2xl text-gray-600 mb-2"></i>
+                                        <span class="text-sm font-medium text-gray-700">Mobile</span>
+                                    </label>
+                                    <label class="flex flex-col items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="radio" name="device-type" class="sr-only">
+                                        <i class="fa-solid fa-tablet-alt text-2xl text-gray-600 mb-2"></i>
+                                        <span class="text-sm font-medium text-gray-700">Tablet</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tasks-section" class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900 flex items-center space-x-2">
+                                    <i class="fa-solid fa-tasks text-blue-600"></i>
+                                    <span>User Tasks & Scenarios</span>
+                                </h3>
+                                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium">
+                                    <i class="fa-solid fa-plus mr-2"></i>
+                                    Add Task
+                                </button>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div id="task-1" class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-sm font-medium text-gray-900">Task 1</span>
+                                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">Required</span>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-red-500">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Task Title</label>
+                                            <input type="text" value="Create a new account" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Task Description</label>
+                                            <textarea rows="2" placeholder="Describe what the user should do..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">You want to sign up for a new account. Please go through the registration process and create your profile.</textarea>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Success Criteria</label>
+                                                <input type="text" placeholder="User reaches thank you page" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Time Limit (optional)</label>
+                                                <input type="number" placeholder="5" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="task-2" class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-sm font-medium text-gray-900">Task 2</span>
+                                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Optional</span>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-red-500">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Task Title</label>
+                                            <input type="text" placeholder="Enter task title" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Task Description</label>
+                                            <textarea rows="2" placeholder="Describe what the user should do..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Success Criteria</label>
+                                                <input type="text" placeholder="Define success condition" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Time Limit (optional)</label>
+                                                <input type="number" placeholder="Minutes" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="task-settings" class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-medium text-gray-900 mb-3">Task Settings</h4>
+                                <div class="space-y-3">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" checked>
+                                        <span class="ml-2 text-sm text-gray-700">Randomize task order</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                        <span class="ml-2 text-sm text-gray-700">Allow participants to skip tasks</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" checked>
+                                        <span class="ml-2 text-sm text-gray-700">Show task progress indicator</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                        <span class="ml-2 text-sm text-gray-700">Enable think-aloud protocol</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="preview-section" class="mt-8 border-t border-gray-200 pt-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+                            <i class="fa-solid fa-eye text-blue-600"></i>
+                            <span>Prototype Preview</span>
+                        </h3>
+                        <div class="bg-gray-100 rounded-lg p-8 text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa-brands fa-figma text-2xl text-purple-600"></i>
+                            </div>
+                            <h4 class="font-medium text-gray-900 mb-2">Prototype Preview</h4>
+                            <p class="text-gray-600 mb-4">Enter a valid Figma URL to see preview</p>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                                Load Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step-navigation" class="flex items-center justify-between mt-8">
+                <button class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
+                    Back to Project Setup
+                </button>
+                <div class="flex items-center space-x-4">
+                    <button class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
+                        Save as Draft
+                    </button>
+                    <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                        Continue to Ethics & Consent
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="steps-overview" class="mt-12 bg-gray-50 rounded-xl p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Next Steps Preview</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div id="next-step-3" class="bg-white rounded-lg p-4 border border-gray-200">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <div class="w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xs font-semibold">3</div>
+                            <h4 class="font-medium text-gray-900">Ethics & Consent</h4>
+                        </div>
+                        <p class="text-sm text-gray-600">Set up the Biometric Data Consent Form for emotion capture</p>
+                    </div>
+                    <div id="next-step-4" class="bg-white rounded-lg p-4 border border-gray-200">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <div class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-semibold">4</div>
+                            <h4 class="font-medium text-gray-900">Questionnaire</h4>
+                        </div>
+                        <p class="text-sm text-gray-600">Add SUS Scale and Custom Questions for Pre/Post Testing</p>
+                    </div>
+                    <div id="next-step-5" class="bg-white rounded-lg p-4 border border-gray-200">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <div class="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xs font-semibold">5</div>
+                            <h4 class="font-medium text-gray-900">Launch & Share</h4>
+                        </div>
+                        <p class="text-sm text-gray-600">Create participant access links and set up screen capture configuration</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>

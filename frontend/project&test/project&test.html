@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <title>Create_New_Test_Pop_Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        /* ตัวหนังสือที่คลิกได้ */
+        .clickable-text {
+            color: #007BFF;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 18px;
+       }
+        .clickable-text:hover {
+            color: #0056b3;
+       }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 80px; 
+            z-index: 9999;
+       }
+          
+        iframe {
+            width: 1150px;
+            height: 700px;
+            border: none;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+       }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="main-container" class="min-h-screen">
+        <header id="header" class="bg-white border-b border-gray-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-black rounded"></div>
+                            <span class="text-xl font-semibold text-gray-900">UserTesting</span>
+                        </div>
+                        <nav class="hidden md:flex space-x-6">
+                            <span class="text-blue-600 font-medium cursor-pointer border-b-2 border-blue-600 pb-4">Projects</span>
+                            <a class="text-gray-700 hover:text-gray-900 cursor-pointer" href="../Analytics/Insights&Analytics.html">Analytics</a>
+                            <a class="text-gray-700 hover:text-gray-900 cursor-pointer" href="../Participants/Participants_Management.html">Participants</a>
+                            <span class="text-gray-700 hover:text-gray-900 cursor-pointer">Settings</span>
+                        </nav>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                            <i class="fa-regular fa-bell text-lg"></i>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="text-gray-700 font-medium">Sarah Chen</span>
+                            <i class="fa-solid fa-chevron-down text-gray-400 text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content" class="max-w-7xl mx-auto px-6 py-8">
+            <div id="page-header" class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Projects & Tests</h1>
+                    <p class="text-gray-600 mt-2">Create, manage, and collaborate on user research projects</p>
+                </div>
+                <button id="create-new-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium flex items-center space-x-2">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Create New Test</span>
+                </button>
+            </div>
+
+            <div id="dashboard-tabs" class="border-b border-gray-200 mb-6">
+                <nav class="flex space-x-8">
+                    <button class="py-3 px-1 border-b-2 border-blue-600 text-blue-600 font-medium">All Projects</button>
+                    <button class="py-3 px-1 text-gray-500 hover:text-gray-700">My Projects</button>
+                    <button class="py-3 px-1 text-gray-500 hover:text-gray-700">Shared with Me</button>
+                    <button class="py-3 px-1 text-gray-500 hover:text-gray-700">Templates</button>
+                </nav>
+            </div>
+
+            <div id="filters-section" class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search projects..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-80">
+                        <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option>All Status</option>
+                        <option>Draft</option>
+                        <option>Live</option>
+                        <option>Analysis</option>
+                        <option>Completed</option>
+                    </select>
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option>All Types</option>
+                        <option>Usability Test</option>
+                        <option>Prototype Test</option>
+                        <option>Survey</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="p-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                        <i class="fa-solid fa-table-cells text-gray-600"></i>
+                    </button>
+                    <button class="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 bg-gray-50">
+                        <i class="fa-solid fa-list text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="project-card-1" class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">Live</span>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fa-solid fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">E-commerce Checkout Flow</h3>
+                    <p class="text-gray-600 text-sm mb-4">Testing the new checkout process for mobile app users</p>
+                    <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                        <span><i class="fa-solid fa-users mr-1"></i>24 participants</span>
+                        <span><i class="fa-solid fa-clock mr-1"></i>5.2 min avg</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-6 h-6 rounded-full">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">+2 more</span>
+                        </div>
+                        <span class="text-xs text-gray-500">Updated 2h ago</span>
+                    </div>
+                </div>
+
+                <div id="project-card-2" class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">Analysis</span>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fa-solid fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Dashboard Navigation Study</h3>
+                    <p class="text-gray-600 text-sm mb-4">Understanding user behavior in the admin dashboard</p>
+                    <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                        <span><i class="fa-solid fa-users mr-1"></i>18 participants</span>
+                        <span><i class="fa-solid fa-star mr-1"></i>SUS: 78</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-6 h-6 rounded-full">
+                        </div>
+                        <span class="text-xs text-gray-500">Updated 1d ago</span>
+                    </div>
+                </div>
+
+                <div id="project-card-3" class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm font-medium rounded-full">Draft</span>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fa-solid fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Mobile App Onboarding</h3>
+                    <p class="text-gray-600 text-sm mb-4">First-time user experience optimization</p>
+                    <div class="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                        <span><i class="fa-solid fa-tasks mr-1"></i>5 tasks</span>
+                        <span><i class="fa-solid fa-eye mr-1"></i>Biometric tracking</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-6 h-6 rounded-full">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-6 h-6 rounded-full">
+                        </div>
+                        <span class="text-xs text-gray-500">Created 3d ago</span>
+                    </div>
+                </div>
+                
+                <!-- popup  -->
+                <div id="openText" class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl border-2 border-dashed border-blue-300 p-6 hover:border-blue-400 transition-colors cursor-pointer flex flex-col items-center justify-center text-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-plus text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2"  id="openText">Create New Test</h3>
+                    <p class="text-gray-600 text-sm"  id="openText">Start a new user research project</p>
+                    <div id="popup">
+                        <iframe id="popupFrame"></iframe>
+                    </div>
+
+                    <script>
+                        const popup = document.getElementById("popup");
+                        const frame = document.getElementById("popupFrame");
+                        const openText = document.getElementById("openText");
+
+                        openText.addEventListener("click", function() {
+                            popup.style.display = "flex";
+                            frame.src = "test01.html";
+                        });
+
+                        popup.addEventListener("click", function(e) {
+                            if (e.target === popup) {
+                            popup.style.display = "none";
+                            window.location.href = "project&test.html"; 
+                            }
+                        });
+                    </script>
+                </div>
+                <!-- popup  -->
+            </div>
+            <div id="quick-start-section" class="mt-12 bg-white rounded-xl border border-gray-200 p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Quick Start Guide</h2>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <div id="step-1" class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-semibold">1</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Project Setup</h3>
+                        <p class="text-sm text-gray-600">Define objectives and target demographics</p>
+                    </div>
+                    <div id="step-2" class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-semibold">2</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Prototype Upload</h3>
+                        <p class="text-sm text-gray-600">Connect Figma or upload assets</p>
+                    </div>
+                    <div id="step-3" class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-semibold">3</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Ethics & Consent</h3>
+                        <p class="text-sm text-gray-600">Configure biometric data consent</p>
+                    </div>
+                    <div id="step-4" class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-semibold">4</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Questionnaire</h3>
+                        <p class="text-sm text-gray-600">Add SUS scale and custom questions</p>
+                    </div>
+                    <div id="step-5" class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-semibold">5</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Launch & Share</h3>
+                        <p class="text-sm text-gray-600">Generate participant links</p>
+                    </div>
+                </div>
+            </div>   
+        </main>
+
+        <footer id="footer" class="bg-white border-t border-gray-200 mt-16">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                    <div class="flex items-center space-x-6">
+                        <span>© 2025 UserTesting, Inc.</span>
+                        <span class="hover:text-gray-700 cursor-pointer">Privacy Policy</span>
+                        <span class="hover:text-gray-700 cursor-pointer">Terms of Service</span>
+                        <span class="hover:text-gray-700 cursor-pointer">Help Center</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="hover:text-gray-700 cursor-pointer">
+                            <i class="fa-brands fa-twitter"></i>
+                        </span>
+                        <span class="hover:text-gray-700 cursor-pointer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                        <span class="hover:text-gray-700 cursor-pointer">
+                            <i class="fa-brands fa-facebook"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
