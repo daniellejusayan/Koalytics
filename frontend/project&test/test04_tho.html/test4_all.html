@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+
+    <!-- [!!] Updated CSS (All comments in English) -->
+    <style>
+        /* By default, hide all content sections */
+        .page-content {
+            display: none;
+        }
+        
+        /* The 'active' class will be used by JavaScript to show the correct section */
+        .page-content.active {
+            display: block;
+        }
+
+        /* --- CSS for Radio Card Buttons (Sidebar) --- */
+        .hidden { display: none; }
+
+        .radio-icon {
+            width: 1.25rem; /* 20px */
+            height: 1.25rem; /* 20px */
+            border-radius: 9999px;
+            border-width: 2px;
+            border-color: #D1D5DB; /* gray-300 */
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .radio-icon::after {
+            content: '';
+            display: block;
+            width: 0.75rem; /* 12px */
+            height: 0.75rem; /* 12px */
+            border-radius: 9999px;
+            background-color: #7C3AED; /* purple-600 */
+            transform: scale(0);
+            transition: transform 0.15s ease-in-out;
+        }
+        .questionnaire-radio:checked + label .radio-icon {
+            border-color: #7C3AED; 
+        }
+        .questionnaire-radio:checked + label .radio-icon::after {
+            transform: scale(1);
+        }
+        /* Card theme highlights */
+        #q_sus:checked + label .card-content {
+            border-color: #7C3AED; /* Purple-600 */
+            box-shadow: 0 0 0 1px #7C3AED;
+        }
+        #q_screener:checked + label .card-content {
+            border-color: #2563EB; /* Blue-600 */
+            box-shadow: 0 0 0 1px #2563EB;
+        }
+        #q_posttest:checked + label .card-content {
+            border-color: #4B5563; /* Gray-600 */
+            box-shadow: 0 0 0 1px #4B5563;
+        }
+        /* [!!] Removed CSS for the deleted 'q_custom' tab */
+        /* --- End of Radio Card CSS --- */
+
+        /* [!!] Removed CSS for AI Generator Spinner (no longer needed) */
+        
+        /* [!!] CSS for Google Forms-style Question Builder (Kept) */
+        .question-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .question-card input[type="text"], .question-card select {
+            font-size: 1rem;
+        }
+        .option-item input[type="text"] {
+            font-size: 0.9rem;
+        }
+        /* --- End of Question Builder CSS --- */
+    </style>
+</head>
+<body class="bg-gray-100">
+    <main id="main-content" class="max-w-6xl mx-auto px-6 py-8">
+        <!-- ... (Page Header and Progress Bar remain unchanged) ... -->
+        <div id="page-header" class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Create New Usability Test</h1>
+            <p class="text-gray-600">Follow these steps to set up your user research project with biometric tracking</p>
+        </div>
+        <div id="progress-bar" class="mb-12">
+             <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2"><div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-semibold"><i class="fa-solid fa-check"></i></div><span class="text-green-600 font-medium">Project Setup</span></div>
+                    <div class="w-16 h-1 bg-green-500"></div>
+                    <div class="flex items-center space-x-2"><div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-semibold"><i class="fa-solid fa-check"></i></div><span class="text-green-600 font-medium">Prototype Upload</span></div>
+                    <div class="w-16 h-1 bg-green-500"></div>
+                    <div class="flex items-center space-x-2"><div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-semibold"><i class="fa-solid fa-check"></i></div><span class="text-green-600 font-medium">Ethics & Consent</span></div>
+                    <div class="w-16 h-1 bg-purple-500"></div>
+                    <div class="flex items-center space-x-2"><div class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">4</div><span class="text-purple-600 font-medium">Questionnaire</span></div>
+                    <div class="w-16 h-1 bg-gray-200"></div>
+                    <div class="flex items-center space-x-2"><div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">5</div><span class="text-gray-500">Launch & Share</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Step Content -->
+        <div id="step-content" class="bg-white rounded-xl border border-gray-200 p-8">
+            <div id="questionnaire-step">
+                <!-- Step Header -->
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-clipboard-question"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Questionnaire Setup</h2>
+                        <p class="text-gray-600">Create or select questionnaires for your usability testing</p>
+                    </div>
+                </div>
+
+                <!-- Main Grid Layout (Sidebar + Content) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- [!!] Column 1: Selection Menu (Sidebar) -->
+                    <div id="questionnaire-types" class="lg-col-span-1 space-y-6">
+                        <h3 class="text-lg font-semibold text-gray-900">Questionnaire Types</h3>
+                        <!-- [!!] 'Custom Questionnaire' tab has been DELETED from here -->
+                        <div class="space-y-4">
+                            <!-- 1. SUS -->
+                            <div>
+                                <input type="radio" name="questionnaire" id="q_sus" class="questionnaire-radio hidden" checked data-target="#content-sus">
+                                <label for="q_sus" class="block">
+                                    <div class="card-content bg-purple-50 border-2 border-purple-200 rounded-lg p-4 cursor-pointer hover:border-purple-300 transition-colors">
+                                        <div class="flex items-start space-x-3"><div class="radio-icon mt-1"></div><div class="flex-1"><h4 class="font-semibold text-gray-900">System Usability Scale (SUS)</h4><p class="text-sm text-gray-700 mt-1">Standard 10-question usability assessment</p><div class="flex items-center space-x-2 mt-2"><span class="badge text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Standard</span><span class="text-xs text-gray-600">10 questions</span></div></div></div>
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- 2. Screener -->
+                            <div>
+                                <input type="radio" name="questionnaire" id="q_screener" class="questionnaire-radio hidden" data-target="#content-screener">
+                                <label for="q_screener" class="block">
+                                    <div class="card-content bg-blue-50 border-2 border-blue-200 rounded-lg p-4 cursor-pointer hover:border-blue-300 transition-colors">
+                                        <div class="flex items-start space-x-3"><div class="radio-icon mt-1"></div><div class="flex-1"><h4 class="font-semibold text-gray-900">Screener Questions</h4><p class="text-sm text-gray-700 mt-1">Filter participants based on criteria</p><div class="flex items-center space-x-2 mt-2"><span class="badge text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Pre-test</span><span class="text-xs text-gray-600">Customizable</span></div></div></div>
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- 3. Post-Test -->
+                            <div>
+                                <input type="radio" name="questionnaire" id="q_posttest" class="questionnaire-radio hidden" data-target="#content-posttest">
+                                <label for="q_posttest" class="block">
+                                    <div class="card-content bg-gray-50 border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gray-300 transition-colors">
+                                        <div class="flex items-start space-x-3"><div class="radio-icon mt-1"></div><div class="flex-1"><h4 class="font-semibold text-gray-900">Post-Test Questions</h4><p class="text-sm text-gray-700 mt-1">Gather feedback after task completion</p><div class="flex items-center space-x-2 mt-2"><span class="badge text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Post-test</span><span class="text-xs text-gray-600">Custom</span></div></div></div>
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- 4. Custom (DELETED) -->
+                        </div>
+                        <!-- ... (Questionnaire Timing section - unchanged) ... -->
+
+                        <!-- <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                           <h4 class="font-semibold text-blue-800 mb-2">Questionnaire Timing</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-2"><input type="checkbox" checked class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"><span class="text-sm text-blue-700">Pre-test screening</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" checked class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"><span class="text-sm text-blue-700">Post-task questions</span></label>
+                                <label class="flex items-center space-x-2"><input type="checkbox" checked class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"><span class="text-sm text-blue-700">Final evaluation</span></label>
+                            </div>
+                        </div> -->
+                        
+                    </div>
+                    <!-- [!!] End of Column 1 -->
+
+
+                    <!-- [!!] Column 2: Content Area (Main Updated Section) -->
+                    <div class="lg:col-span-2">
+
+                        <!-- [!!] 1. SUS Content (CLEANED) -->
+                        <div id="content-sus" class="page-content active space-y-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900">System Usability Scale (SUS)</h3>
+                                <!-- This button is kept -->
+                                <button class="add-question-btn text-purple-600 hover:text-purple-700 text-sm font-medium" data-target-container="#sus-custom-questions">
+                                    <i class="fa-solid fa-plus mr-1"></i>Add Custom Question
+                                </button>
+                            </div>
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
+                                <div class="flex items-start space-x-3"><i class="fa-solid fa-info-circle text-purple-600 mt-1"></i><div><h4 class="font-semibold text-purple-800">About SUS</h4><p class="text-purple-700 text-sm mt-1">The System Usability Scale is a validated 10-item questionnaire...</p></div></div>
+                            </div>
+
+                            <!-- [!!] Static questions and 'Additional Options' box have been DELETED -->
+                            
+                            <!-- [!!] Container for custom-added questions (Kept) -->
+                            <div id="sus-custom-questions" class="space-y-4 mt-6">
+                                <!-- New questions added by JS will appear here -->
+                            </div>
+                            
+                        </div> <!-- [!!] End of #content-sus -->
+
+
+                        <!-- [!!] 2. Screener Content (CLEANED) -->
+                        <div id="content-screener" class="page-content space-y-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900">Screener Questions</h3>
+                                <!-- This button is kept -->
+                                <button class="add-question-btn text-purple-600 hover:text-purple-700 text-sm font-medium" data-target-container="#screener-custom-questions">
+                                    <i class="fa-solid fa-plus mr-1"></i>Add Custom Question
+                                </button>
+                            </div>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                                <div class="flex items-start space-x-3"><i class="fa-solid fa-info-circle text-blue-600 mt-1"></i><div><h4 class="font-semibold text-blue-800">About Screener Questions</h4><p class="text-blue-700 text-sm mt-1">Use pre-test questions to filter participants...</p></div></div>
+                            </div>
+
+                            
+                            
+                            <!-- [!!] Container for custom-added questions (Kept) -->
+                            <div id="screener-custom-questions" class="space-y-4 mt-6">
+                                <!-- New questions added by JS will appear here -->
+                            </div>
+
+                        </div> <!-- [!!] End of #content-screener -->
+
+                        <!-- [!!] 3. Post-Test Content (CLEANED) -->
+                        <div id="content-posttest" class="page-content space-y-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900">Post-Test Questions</h3>
+                                <!-- This button is kept -->
+                                <button class="add-question-btn text-purple-600 hover:text-purple-700 text-sm font-medium" data-target-container="#posttest-custom-questions">
+                                    <i class="fa-solid fa-plus mr-1"></i>Add Custom Question
+                                </button>
+                            </div>
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                                <div class="flex items-start space-x-3"><i class="fa-solid fa-info-circle text-green-600 mt-1"></i><div><h4 class="font-semibold text-green-800">About Post-Test Questions</h4><p class="text-green-700 text-sm mt-1">Gather feedback immediately after tasks.</p></div></div>
+                            </div>
+                        
+
+                            <!-- [!!] Container for custom-added questions (Kept) -->
+                            <div id="posttest-custom-questions" class="space-y-4 mt-6">
+                                <!-- New questions added by JS will appear here -->
+                            </div>
+
+                        </div> <!-- [!!] End of #content-posttest -->
+
+
+                        <!-- [!!] 4. Custom Content (DELETED) -->
+                        <!-- The entire #content-custom div has been removed -->
+
+                    </div>
+                    <!-- [!!] End of Column 2 -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ... (Step Navigation Buttons - unchanged) ... -->
+        <div id="step-navigation" class="flex items-center justify-between mt-8">
+            <button class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium"><i class="fa-solid fa-arrow-left mr-2"></i>Back to Ethics & Consent</button>
+            <div class="flex items-center space-x-4">
+                <button class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">Save as Draft</button>
+                <button class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium">Continue to Launch & Share<i class="fa-solid fa-arrow-right ml-2"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- [!!] JavaScript Section (All comments in English) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- [!!] 1. Tab-Switching Logic (Unchanged) ---
+            const radioButtons = document.querySelectorAll('input[name="questionnaire"]');
+            const contentSections = document.querySelectorAll('.page-content');
+            function updateContent(targetId) {
+                contentSections.forEach(section => section.classList.remove('active'));
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) targetSection.classList.add('active');
+            }
+            radioButtons.forEach(radio => {
+                radio.addEventListener('click', () => updateContent(radio.dataset.target));
+            });
+            const initiallyChecked = document.querySelector('input[name="questionnaire"]:checked');
+            if (initiallyChecked) updateContent(initiallyChecked.dataset.target);
+
+
+            // --- [!!] 2. Gemini AI Generator Logic (DELETED) ---
+            // All JavaScript related to callGeminiApi, displayQuestions, 
+            // setLoadingState, and the AI button listeners has been removed.
+
+
+            // --- [!!] 3. Google Forms-style Question Builder Logic (Kept) ---
+
+            // HTML template for a new question card (based on your screenshot)
+            const questionCardTemplate = `
+            <div class="question-card bg-white border-2 border-gray-200 rounded-lg p-6 space-y-4 shadow-sm transition-all hover:shadow-md">
+                <!-- Top Row: Question Text + Type Dropdown -->
+                <div class="flex flex-col md:flex-row items-start md:items-center space-y-3 md:space-y-0 md:space-x-4">
+                    <input type="text" placeholder="Question" class="flex-grow w-full md:w-auto border-b-2 border-gray-200 focus:border-purple-500 outline-none p-2 text-base font-medium" value="Question">
+                    <select class="question-type-select w-full md:w-auto border border-gray-300 rounded-lg p-2 text-sm shadow-sm">
+                        <option value="multiple-choice">Multiple Choice</option>
+                        <option value="checkboxes">Checkboxes</option>
+                        <option value="paragraph">Paragraph</option>
+                        <option value="linear-scale">Linear Scale</option>
+                    </select>
+                </div>
+                <!-- Options Container (for MC/Checkboxes) -->
+                <div class="options-container space-y-3 ml-2 md:ml-4 pt-2">
+                    <!-- Options will be dynamically added here -->
+                </div>
+                <!-- "Add Option" Button (for MC/Checkboxes) -->
+                <div class="add-option-container ml-2 md:ml-4">
+                    <button class="add-option-btn text-purple-600 hover:text-purple-800 text-sm font-medium">
+                        <i class="fa-solid fa-plus mr-1"></i>Add Option
+                    </button>
+                </div>
+                <!-- Placeholder for Linear Scale UI -->
+                <div class="linear-scale-container hidden ml-2 md:ml-4 text-sm text-gray-500 flex items-center space-x-4">
+                    <span class="text-gray-500">1</span>
+                    <div class="flex space-x-2">
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded-full"></div>
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded-full"></div>
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded-full"></div>
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded-full"></div>
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded-full"></div>
+                    </div>
+                    <span class="text-gray-500">5</span>
+                </div>
+                <!-- Card Footer: Required Toggle + Delete -->
+                <div class="flex items-center justify-end space-x-6 border-t border-gray-200 pt-4 mt-4">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="rounded border-gray-300 text-purple-600 focus:ring-purple-500 shadow-sm">
+                        <span class="text-sm text-gray-700">Required</span>
+                    </label>
+                    <button class="delete-question-btn text-gray-400 hover:text-red-600" title="Delete Question">
+                        <i class="fa-solid fa-trash-alt text-lg"></i>
+                    </button>
+                </div>
+            </div>
+            `;
+
+            // HTML template for a single option
+            function getOptionTemplate(type = 'multiple-choice') {
+                const icon = type === 'checkboxes' 
+                    ? 'fa-regular fa-square' // Checkbox icon
+                    : 'fa-regular fa-circle'; // Multiple choice icon
+                return `
+                <div class="option-item flex items-center space-x-3">
+                    <i class="${icon} text-gray-400 text-lg"></i>
+                    <input type="text" placeholder="Option" class="flex-grow border-b border-gray-300 focus:border-purple-500 outline-none p-1 text-sm" value="Option 1">
+                    <button class="delete-option-btn text-gray-400 hover:text-red-500" title="Delete Option">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                `;
+            }
+
+            // Function to add a new option to a question card
+            function addOption(optionsContainer, questionType) {
+                const optionTemplate = getOptionTemplate(questionType);
+                const optionEl = document.createElement('div');
+                optionEl.innerHTML = optionTemplate;
+                
+                const newOptionInput = optionEl.querySelector('input[type="text"]');
+                const optionCount = optionsContainer.querySelectorAll('.option-item').length + 1;
+                newOptionInput.value = `Option ${optionCount}`;
+                
+                optionEl.querySelector('.delete-option-btn').addEventListener('click', deleteElement);
+                optionsContainer.appendChild(optionEl.firstElementChild);
+            }
+
+            // Function to handle question type changes (e.g., from MC to Paragraph)
+            function handleQuestionTypeChange(e) {
+                const card = e.target.closest('.question-card');
+                const optionsContainer = card.querySelector('.options-container');
+                const addOptionContainer = card.querySelector('.add-option-container');
+                const linearScaleContainer = card.querySelector('.linear-scale-container');
+                
+                const type = e.target.value;
+                
+                if (type === 'paragraph') {
+                    optionsContainer.style.display = 'none';
+                    addOptionContainer.style.display = 'none';
+                    linearScaleContainer.style.display = 'none';
+                } else if (type === 'linear-scale') {
+                    optionsContainer.style.display = 'none';
+                    addOptionContainer.style.display = 'none';
+                    linearScaleContainer.style.display = 'flex';
+                } else { // multiple-choice or checkboxes
+                    optionsContainer.style.display = 'block';
+                    addOptionContainer.style.display = 'block';
+                    linearScaleContainer.style.display = 'none';
+                    
+                    const iconClass = type === 'checkboxes' ? 'fa-regular fa-square' : 'fa-regular fa-circle';
+                    optionsContainer.querySelectorAll('.option-item i').forEach(icon => {
+                        icon.className = `${iconClass} text-gray-400 text-lg`;
+                    });
+                }
+            }
+
+            // Generic function to delete an element (used for options and questions)
+            function deleteElement(e) {
+                let targetElement = e.target.closest('.option-item');
+                if (!targetElement) {
+                    targetElement = e.target.closest('.question-card');
+                }
+                if (targetElement) {
+                    targetElement.remove();
+                }
+            }
+
+            // Function to create and append a new question card
+            function createQuestionCard(targetContainerId) {
+                const container = document.querySelector(targetContainerId);
+                if (!container) {
+                    console.error('Target container not found:', targetContainerId);
+                    return;
+                }
+
+                const cardEl = document.createElement('div');
+                cardEl.innerHTML = questionCardTemplate;
+                const newCard = cardEl.firstElementChild;
+
+                newCard.querySelector('.question-type-select').addEventListener('change', handleQuestionTypeChange);
+                newCard.querySelector('.delete-question-btn').addEventListener('click', deleteElement);
+                
+                const addOptionBtn = newCard.querySelector('.add-option-btn');
+                addOptionBtn.addEventListener('click', (e) => {
+                    const optionsContainer = newCard.querySelector('.options-container');
+                    const questionType = newCard.querySelector('.question-type-select').value;
+                    addOption(optionsContainer, questionType);
+                });
+
+                const optionsContainer = newCard.querySelector('.options-container');
+                addOption(optionsContainer, 'multiple-choice');
+
+                container.appendChild(newCard);
+            }
+
+            // Initialize all "Add Question" buttons on the page
+            document.querySelectorAll('.add-question-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetContainerId = button.dataset.targetContainer;
+                    createQuestionCard(targetContainerId);
+                });
+            });
+
+            // [!!] Pre-populate the *SUS* tab with one question to start
+            // (Moved from the deleted 'custom' tab)
+            createQuestionCard("#sus-custom-questions");
+
+            // --- End of Question Builder logic ---
+        });
+    </script>
+</body>
+</html>
